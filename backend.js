@@ -11,9 +11,11 @@ let bottleElement = document.getElementById("bottles");
 let gateElement = document.getElementById("gates");
 let wallElement = document.getElementById("walls");
 // //reset localStorage for testing
-// localStorage.setItem("bottles", -1);
-// localStorage.setItem("gates", -1);
-// localStorage.setItem("walls", -1);
+if (parseInt(localStorage.getItem("walls") + parseInt(localStorage.getItem("bottles") > 27))){
+    localStorage.setItem("bottles", -1);
+    localStorage.setItem("gates", -1);
+    localStorage.setItem("walls", -1);
+}
 // Read saved values from localStorage and coerce to numbers. If not present, use the input's current value.
 let gateNum = parseInt(localStorage.getItem("gates"), 10);
 if (isNaN(gateNum)) gateNum = parseInt(gateElement.value, 10);
