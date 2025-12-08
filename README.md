@@ -1,3 +1,4 @@
-# Robot-Tour-Course-Generator-Science-Olympiad-
+# Robot Tour Course Generator (Science Olympiad)
 Generate courses for your science olympiad needs! Just press the button...
-https://toyjig.github.io/RoToGen.github.io/
+<br>
+https://toyjig.github.io/Robot-Tour-Course-Generator.github.io
