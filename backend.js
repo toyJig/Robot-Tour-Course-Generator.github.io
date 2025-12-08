@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let ctx = c.getContext("2d");
     let time = document.getElementById("time");
 
-    //*************SETUP VARIABLES*****************//
+    //*************LOAD SETUP VARIABLES*****************//
     //-1 for random generation according to rules
 
     let bottleElement = document.getElementById("bottles");
