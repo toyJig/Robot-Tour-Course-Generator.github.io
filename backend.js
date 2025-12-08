@@ -32,7 +32,7 @@ function save() {
     if (parseInt(wallElement.value) < -1) wallElement.value = -1;
     if (parseInt(bottleElement.value) > 19) bottleElement.value = 19;
     if (parseInt(gateElement.value) > 19) gateElement.value = 19;
-    if (parseInt(wallElement.value) > 30) wallElement.value = 31;
+    if (parseInt(wallElement.value) > 30) wallElement.value = 25;
     localStorage.setItem("bottles", bottleElement.value);
     localStorage.setItem("gates", gateElement.value);
     localStorage.setItem("walls", wallElement.value);
@@ -244,4 +244,5 @@ function newTrack() {
     attempts = 0;
 }
 newTrack();
+
 });
