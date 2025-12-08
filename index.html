@@ -17,6 +17,13 @@
             </canvas>
         </div>
         <p id="time"></p>
+        <div style="align-items: center; text-align: center;">
+            <label>Bottles: &nbsp&nbsp&nbsp&nbsp  Gates: &nbsp&nbsp&nbsp&nbsp&nbsp  Walls:&nbsp</label>
+            <br>
+            <input type="number" id="bottles" min="-1" max="19" rows="1" cols="5" inputmode="numeric" style="resize: none;" value="-1">
+            <input type="number" id="gates" min="-1" max="19" rows="1" cols="5" inputmode="numeric" style="resize: none;" value="-1">
+            <input type="number" id="walls" min="-1" max="31" rows="1" cols="5" inputmode="numeric" style="resize: none;" value="-1">
+        </div>
         <p>
             <button onclick="location.reload();">New Course</button>
         </p>
