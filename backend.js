@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let c = document.getElementById("myCanvas");
     let ctx = c.getContext("2d");
     let time = document.getElementById("time");
-    time.textContent = "Target Time: " + (Math.round(Math.random() * 30) + 50).toString() + " seconds";
 
     //*************SETUP VARIABLES*****************//
     //-1 for random generation according to rules
@@ -54,11 +53,13 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         ctx.clearRect(0, 0, c.width, c.height);
+        time.textContent = "Target Time: " + (Math.round(Math.random() * 30) + 50).toString() + " seconds";
+
 
         //*************GENERATE TRACK**************/
         let gateNum = gateNumInput;
         let maxWalls = maxWallsInput;
-        let bottles = bottlesInput;
+        let bottles = bottlesInput; 
         let overallArray = [[], [], [], [], [], [], [], [], []]; //9x11
 
         if (gateNum == -1) { gateNum = Math.floor(Math.random() * 3) + 4; }
