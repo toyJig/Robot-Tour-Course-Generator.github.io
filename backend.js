@@ -32,7 +32,7 @@ function save() {
     if (parseInt(wallElement.value) < -1) wallElement.value = -1;
     if (parseInt(bottleElement.value) > 19) bottleElement.value = 19;
     if (parseInt(gateElement.value) > 19) gateElement.value = 19;
-    if (parseInt(wallElement.value) > 30) wallElement.value = 25;
+    if (parseInt(wallElement.value) > 30) wallElement.value = 31;
     localStorage.setItem("bottles", bottleElement.value);
     localStorage.setItem("gates", gateElement.value);
     localStorage.setItem("walls", wallElement.value);
@@ -60,6 +60,7 @@ function newTrack() {
             bottles = Math.round(Math.random() * 2) + 3; 
         }
     }
+    bottles = Math.max(0, Math.min(bottles, 31-maxWalls)); //ensure bottles + walls <= 31
     let count = 0;
     //iterates only wall and bottle spaces
     for (let i = 0; i < maxWalls + bottles; i++) {
@@ -244,5 +245,4 @@ function newTrack() {
     attempts = 0;
 }
 newTrack();
-
 });
