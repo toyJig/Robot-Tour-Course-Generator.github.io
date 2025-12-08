@@ -11,7 +11,7 @@ let bottleElement = document.getElementById("bottles");
 let gateElement = document.getElementById("gates");
 let wallElement = document.getElementById("walls");
 // //reset localStorage for testing
-if (parseInt(localStorage.getItem("walls") + parseInt(localStorage.getItem("bottles") > 27))){
+if (parseInt(localStorage.getItem("walls")) + parseInt(localStorage.getItem("bottles")) > 25){ //idiot prevention
     localStorage.setItem("bottles", -1);
     localStorage.setItem("gates", -1);
     localStorage.setItem("walls", -1);
@@ -247,4 +247,8 @@ function newTrack() {
     attempts = 0;
 }
 newTrack();
+
+
+document.getElementById("newTrackButton").addEventListener("click", function() {newTrack()});
+
 });
