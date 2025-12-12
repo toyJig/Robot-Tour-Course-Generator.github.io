@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let bottles = bottlesInput; 
         let overallArray = [[], [], [], [], [], [], [], [], []]; //9x11
 
-        //account for -1s and set them to rule based random generation
         if (gateNum == -1) { gateNum = Math.floor(Math.random() * 3) + 4; }
         if (maxWalls == -1) { maxWalls = 10 };
         if (bottles == -1) {
@@ -71,8 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 bottles = Math.round(Math.random() * 2) + 3;
             }
         }
-        //ensure bottles + walls <= 31 and that bottles are -1 or less to gates
-        bottles = Math.max(0, Math.min(gateNum-1, Math.min(bottles, 31 - maxWalls))); 
+        bottles = Math.max(0, Math.min(bottles, 31 - maxWalls)); //ensure bottles + walls <= 31
         let count = 0;
         //iterates only wall and bottle spaces
         for (let i = 0; i < maxWalls + bottles; i++) {
