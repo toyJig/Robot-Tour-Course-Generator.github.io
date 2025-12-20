@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    let c = document.getElementById("myCanvas");
+    let c = document.querySelector("canvas");
     let ctx = c.getContext("2d");
     let time = document.getElementById("time");
+
+    ctx.translate(0, 50);
 
     //*************LOAD SETUP VARIABLES*****************//
     //-1 for random generation according to rules
@@ -59,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //*************GENERATE TRACK**************/
         let gateNum = gateNumInput;
         let maxWalls = maxWallsInput;
-        let bottles = bottlesInput; 
+        let bottles = bottlesInput;
         let overallArray = [[], [], [], [], [], [], [], [], []]; //9x11
 
         if (gateNum == -1) { gateNum = Math.floor(Math.random() * 3) + 4; }
@@ -81,9 +83,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 y = Math.floor(Math.random() * 7) + 1;
             }
             if (count < maxWalls) {                             //make walls = 1
-                overallArray[y][x] = 1
+                overallArray[y][x] = 1;
             } else if (count < maxWalls + bottles) {            // make bottles = 2
-                overallArray[y][x] = 2
+                overallArray[y][x] = 2;
             }
             count += 1;
         }
@@ -97,10 +99,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 y = Math.floor(Math.random() * 7) + 1;
             }
             if (count < gateNum) {                              //make gates = 4
-                overallArray[y][x] = 4
+                overallArray[y][x] = 4;
                 // console.log("gate at " + x + "," + y);
             } else {                                            // make end = 5
-                overallArray[y][x] = 5
+                overallArray[y][x] = 5;
             }
             count += 1;
         }
@@ -113,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
             startY = Math.round(Math.random()) * 8;
         } else {
             startX = Math.round(Math.random()) * 10;
-            startY = Math.round(Math.random() * 3) * 2 + 1
+            startY = Math.round(Math.random() * 3) * 2 + 1;
         }
         overallArray[startY][startX] = 3; //ensure start point is on edge
 
@@ -124,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let gatesFound = 0;
         let endFound = false;
         let checkedSpots = [];
-        checkSpot = function (xCheck, yCheck) {
+        const checkSpot = function (xCheck, yCheck) {
             // console.log("checking " + xCheck + "," + yCheck);
             if (xCheck < 1 || xCheck > 9 || yCheck < 1 || yCheck > 7) {
                 return false; //out of bounds
@@ -135,8 +137,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             // console.log("not wall at " + xCheck + "," + yCheck);
             return true; //not wall
-        }
-        explore = function (xPos, yPos) {
+        };
+        const explore = function (xPos, yPos) {
             if (checkedSpots.includes("" + xPos + " " + yPos)) {
                 // console.log("already checked " + xPos + "," + yPos);
                 return; //already checked
@@ -170,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 explore(xPos + 1, yPos);
             }
             return;
-        }
+        };
 
         if (startX == 0) { startX = 1 };
         if (startX == 10) { startX = 9 };
@@ -188,16 +190,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         //*************DRAW STUFF*****************//
+
         //draw grid
         ctx.strokeStyle = "LightGray";
         ctx.lineWidth = 1;
-        for (let i = 0; i <= 9; i++) {
+        for (let i = 0; i <= 5; i++) {
             ctx.beginPath();
             ctx.moveTo(i * 100 + 9.36 / 2, 0);
             ctx.lineTo(i * 100 + 9.36 / 2, 450);
             ctx.stroke();
         }
-        for (let i = 0; i <= 9; i++) {
+        for (let i = 0; i <= 4; i++) {
             ctx.beginPath();
             ctx.moveTo(0, i * 100 + 9.36 / 2);
             ctx.lineTo(1100, i * 100 + 9.36 / 2);
@@ -272,7 +275,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     newTrack();
 
-
-    document.getElementById("newTrackButton").addEventListener("click", function () { newTrack() });
-
+    document.getElementById("newTrackButton").addEventListener("click", newTrack);
 });
