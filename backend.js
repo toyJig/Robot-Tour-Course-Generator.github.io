@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let ctx = c.getContext("2d");
     let time = document.getElementById("time");
 
-    ctx.translate(0, 50);
+    ctx.translate((c.width - 509.36) / 2, (c.height - 409.36) / 2);
 
     //*************LOAD SETUP VARIABLES*****************//
     //-1 for random generation according to rules
@@ -174,6 +174,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         };
 
+        // rotate
+        if (startX == 0) c.style.rotate = "-90deg";
+        if (startX == 10) c.style.rotate = "90deg";
+        if (startY == 0) c.style.rotate = "180deg";
+        if (startY == 8) c.style.rotate = "0deg";
+
         if (startX == 0) { startX = 1 };
         if (startX == 10) { startX = 9 };
         if (startY == 0) { startY = 1 };
@@ -197,15 +203,20 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 0; i <= 5; i++) {
             ctx.beginPath();
             ctx.moveTo(i * 100 + 9.36 / 2, 0);
-            ctx.lineTo(i * 100 + 9.36 / 2, 450);
+            ctx.lineTo(i * 100 + 9.36 / 2, 409.36);
             ctx.stroke();
         }
         for (let i = 0; i <= 4; i++) {
             ctx.beginPath();
             ctx.moveTo(0, i * 100 + 9.36 / 2);
-            ctx.lineTo(1100, i * 100 + 9.36 / 2);
+            ctx.lineTo(509.36, i * 100 + 9.36 / 2);
             ctx.stroke();
         }
+
+        //draw outline
+        ctx.strokeStyle = "Black";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(0, 0, 509.36, 409.36);
 
         //*****draw gates based on array*****
         for (let i = 0; i < 9; i++) {
